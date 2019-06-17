@@ -1,0 +1,34 @@
+body {
+    background: black;
+    color: rgb(224, 215, 135);
+    text-align: center;
+}
+
+.jumbotron {
+    background: rgb(109, 32, 4);
+}
+
+#timer {
+    font-size: 130%;
+}
+
+#answer1 {
+    font-size: 120%;
+}
+
+#answer2 {
+    font-size: 120%;
+}
+
+#answer3 {
+    font-size: 120%;
+}
+
+#answer4 {
+    font-size: 120%;
+}
+
+#questions {
+    background: rgb(224, 215, 135);
+    color: rgb(128, 87, 11);
+}
