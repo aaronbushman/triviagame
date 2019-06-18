@@ -56,6 +56,11 @@ $(document).ready(function () {
     function correct() { //function to run when correct answer is chosen
         score++; //score increase by 1
         console.log(score);
+        console.log(questionNum);
+        $("#answer1").off("click");
+        $("#answer2").off("click");
+        $("#answer3").off("click");
+        $("#answer4").off("click");
         $("#score").text(score); //print new score to score div
         stop(); //stop timer
         alert("yay, you're correct!"); //alert notifying of correct selection
@@ -82,6 +87,10 @@ $(document).ready(function () {
     function wrong() { //wrong answer function, same as correct minus the score addition
         stop();
         alert("oof, that wasn't right at all.")
+        $("#answer1").off("click");
+        $("#answer2").off("click");
+        $("#answer3").off("click");
+        $("#answer4").off("click");
         if (questionNum == 1) {
             alert("Let's give another question a shot.")
             questionTwo()
@@ -203,6 +212,7 @@ $(document).ready(function () {
 
     function newGame() {
         score = 0;
+        $("#score").text(score);
         questionNum++;
         console.log(this);
         console.log(questionNum);
