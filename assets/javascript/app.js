@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     var timer = ""; //timer holder
     var score = 0; //score holder
-    var questionNum = ""; //question # holder
+    var questionNum = 0; //question # holder
     var intervalId; //set var for inervalId timer
 
     var question1 = "Question 1: blah blah blah"; //question 1 and answers
@@ -55,22 +55,23 @@ $(document).ready(function () {
 
     function correct() { //function to run when correct answer is chosen
         score++; //score increase by 1
+        console.log(score);
         $("#score").text(score); //print new score to score div
         stop(); //stop timer
         alert("yay, you're correct!"); //alert notifying of correct selection
-        if (questionNum === 1) { //if first question, moves to question 2
+        if (questionNum <= 1) { //if first question, moves to question 2
             questionTwo();
             console.log(questionNum);
         }
-        else if (questionNum === 2) { //if second question, moves to question 3
+        else if (questionNum == 2) { //if second question, moves to question 3
             questionThree();
             console.log(questionNum);
         }
-        else if (questionNum === 3) { //if on third question, moves to question 4 
+        else if (questionNum == 3) { //if on third question, moves to question 4 
             questionFour();
             console.log(questionNum);
         }
-        else if (questionNum === 4) { //if at end of game, run endgame function
+        else if (questionNum == 4) { //if at end of game, run endgame function
             console.log(questionNum);
             alert("Game Over!");
             endGame();
@@ -78,25 +79,25 @@ $(document).ready(function () {
 
     }
 
-    function wrong() {
+    function wrong() { //wrong answer function, same as correct minus the score addition
         stop();
         alert("oof, that wasn't right at all.")
-        if (questionNum === 1) {
+        if (questionNum == 1) {
             alert("Let's give another question a shot.")
             questionTwo()
             console.log(questionNum);
         }
-        else if (questionNum === 2) {
+        else if (questionNum == 2) {
             alert("Let's give another question a shot.")
             questionThree();
             console.log(questionNum);
         }
-        else if (questionNum === 3) {
+        else if (questionNum == 3) {
             alert("Let's give another question a shot.")
             questionFour();
             console.log(questionNum);
         }
-        else if (questionNum === 4) {
+        else if (questionNum == 4) {
             alert("Thank God that's over.")
             endGame();
             console.log(questionNum);
@@ -105,7 +106,9 @@ $(document).ready(function () {
 
     function gameStart() {
         $("#clickStart").click(function () {
-            questionNum = 1;
+            questionNum++;
+            console.log(this);
+            console.log(questionNum);
             timerStart();
             $("#questions").empty();
             $("#questions").text(question1);
@@ -122,6 +125,8 @@ $(document).ready(function () {
 
     function questionTwo() {
         questionNum++;
+        console.log(this);
+        console.log(questionNum);
         timerStart();
         $("#questions").empty();
         $("#answer1").empty();
@@ -142,6 +147,8 @@ $(document).ready(function () {
 
     function questionThree() {
         questionNum++;
+        console.log(this);
+        console.log(questionNum);
         timerStart();
         $("#questions").empty();
         $("#answer1").empty();
@@ -161,6 +168,8 @@ $(document).ready(function () {
 
     function questionFour() {
         questionNum++;
+        console.log(this);
+        console.log(questionNum);
         timerStart();
         $("#questions").empty();
         $("#answer1").empty();
@@ -187,12 +196,16 @@ $(document).ready(function () {
         $("#answer4").empty();
         $("#questions").html("<div class='container' style='margin: 20px'><button id='reset'>PLAY AGAIN?</button></div>");
         questionNum = 0
+        console.log(this);
+        console.log(questionNum);
         $("#reset").click(newGame);
     }
 
     function newGame() {
         score = 0;
         questionNum++;
+        console.log(this);
+        console.log(questionNum);
         timerStart();
         $("#questions").empty();
         $("#questions").text(question1);
@@ -205,6 +218,7 @@ $(document).ready(function () {
         $("#answer3").click(wrong);
         $("#answer4").click(wrong);
     }
-
+    console.log(this);
+    console.log(questionNum);
     gameStart();
 })
