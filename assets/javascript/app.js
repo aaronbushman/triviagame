@@ -5,29 +5,29 @@ $(document).ready(function () {
     var questionNum = 0; //question # holder
     var intervalId; //set var for inervalId timer
 
-    var question1 = "Question 1: blah blah blah"; //question 1 and answers
-    var oneAnswer1 = "Correct answer1 blah blah blah";
-    var oneAnswer2 = "Wrong answer2 blah blah blah";
-    var oneAnswer3 = "Wrong answer3 blah blah blah";
-    var oneAnswer4 = "Wrong answer4 blah blah blah";
+    var question1 = "Question 1: What year was Richmond, Virginia become incorporated?"; //question 1 and answers
+    var oneAnswer1 = "1742";
+    var oneAnswer2 = "1776";
+    var oneAnswer3 = "1843";
+    var oneAnswer4 = "1871";
 
-    var question2 = "Question 2: blah blah blah"; //question 2 and answers
-    var twoAnswer1 = "Wrong answer1 blah blah blah";
-    var twoAnswer2 = "Wrong answer2 blah blah blah";
-    var twoAnswer3 = "Wrong answer3 blah blah blah";
-    var twoAnswer4 = "Correct answer4 blah blah blah";
+    var question2 = "The James that runs through the city center endears Richmond with the nickname, 'the ______ City'"; //question 2 and answers
+    var twoAnswer1 = "Flood";
+    var twoAnswer2 = "Hilly";
+    var twoAnswer3 = "White Water";
+    var twoAnswer4 = "River";
 
-    var question3 = "Question 3: blah blah blah"; //question 4 and answers
-    var threeAnswer1 = "Wrong answer1 blah blah blah";
-    var threeAnswer2 = "Wrong answer2 blah blah blah";
-    var threeAnswer3 = "Correct answer3 blah blah blah";
-    var threeAnswer4 = "Wrong answer4 blah blah blah";
+    var question3 = "The commonly used abbreviation for Richmond, Virginia is:"; //question 4 and answers
+    var threeAnswer1 = "RIC";
+    var threeAnswer2 = "RMD";
+    var threeAnswer3 = "RVA";
+    var threeAnswer4 = "RICH";
 
-    var question4 = "Question 4: blah blah blah"; //question 4 and answers
-    var fourAnswer1 = "Wrong answer1 blah blah blah";
-    var fourAnswer2 = "Correct answer2 blah blah blah";
-    var fourAnswer3 = "Wrong answer3 blah blah blah";
-    var fourAnswer4 = "Wrong answer4 blah blah blah";
+    var question4 = "Which county borders directly with the Richmond City limits?"; //question 4 and answers
+    var fourAnswer1 = "Hanover County";
+    var fourAnswer2 = "Chesterfield County";
+    var fourAnswer3 = "Goochland County";
+    var fourAnswer4 = "New Kent County";
 
     function stop() {
         clearInterval(intervalId);
@@ -51,6 +51,7 @@ $(document).ready(function () {
 
     function timesUp() { //alert function for when timer hits 0
         alert("Time's Up!");
+        timeUp();
     }
 
     function correct() { //function to run when correct answer is chosen
@@ -87,6 +88,33 @@ $(document).ready(function () {
     function wrong() { //wrong answer function, same as correct minus the score addition
         stop();
         alert("oof, that wasn't right at all.")
+        $("#answer1").off("click");
+        $("#answer2").off("click");
+        $("#answer3").off("click");
+        $("#answer4").off("click");
+        if (questionNum == 1) {
+            alert("Let's give another question a shot.")
+            questionTwo()
+            console.log(questionNum);
+        }
+        else if (questionNum == 2) {
+            alert("Let's give another question a shot.")
+            questionThree();
+            console.log(questionNum);
+        }
+        else if (questionNum == 3) {
+            alert("Let's give another question a shot.")
+            questionFour();
+            console.log(questionNum);
+        }
+        else if (questionNum == 4) {
+            alert("Thank God that's over.")
+            endGame();
+            console.log(questionNum);
+        }
+    }
+
+    function timeUp() { //wrong answer function, same as correct minus the score addition
         $("#answer1").off("click");
         $("#answer2").off("click");
         $("#answer3").off("click");
